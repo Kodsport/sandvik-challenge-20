@@ -29,6 +29,16 @@ int read_sol(istream& is, feedback_function fail) {
 	}
 	for (int i = 0; i < 3; i++) if (co[i] != counts[i])
 		fail("bad count: expected %d %c's, found %d", counts[i], 'A' + i, co[i]);
+	for (int i = 0; i < R; i++) {
+		for (int j = 0; j < C - 1; j++) {
+			if (grid[i][j] == grid[i][j + 1]) fail("horizontally neighboring tiles of same color %d at position (%d,%d)", grid[i][j], i, j);
+		}
+	}
+	for (int i = 0; i < R - 1; i++) {
+		for (int j = 0; j < C; j++) {
+			if (grid[i][j] == grid[i + 1][j]) fail("vertically neighboring tiles of same color %d at position (%d,%d)", grid[i][j], i, j);
+		}
+	}
 	string dummy;
 	if (is >> dummy) fail("trailing garbage: %s", dummy.c_str());
 	return 1;
