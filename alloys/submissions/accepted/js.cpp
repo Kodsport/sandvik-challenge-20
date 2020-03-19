@@ -16,5 +16,5 @@ int main() {
     double C;
     cin >> C;
     double x = C / 2;
-    cout << x * x << endl;
+    cout << setprecision(10) << fixed << x * x << endl;
 }
