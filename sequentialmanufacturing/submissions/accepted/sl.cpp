@@ -22,6 +22,6 @@ int main() {
 		maxt = max(maxt, t);
 		sumt += t;
 	}
-	cout << sumt + (N-1) * maxt << endl;
+	cout << sumt + (P-1) * maxt << endl;
 	exit(0);
 }
