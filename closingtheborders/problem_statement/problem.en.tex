@@ -17,13 +17,13 @@ Each flight leaves in the evening and arrives in the morning the next day.
 If you pick an optimal sequence of flights, what is the probability that it will take you home?
 
 \section*{Input}
-The first line of the input contains two numbers $N$ ($2 \le 100$) and $M$ ($1 \le \frac{N(N-1)}{2}$)  -- the number of countries and the number of flights.
+The first line of the input contains two numbers $N$ ($2 \le N \le 100$) and $M$ ($1 \le M \le \frac{N(N-1)}{2}$)  -- the number of countries and the number of flights.
 
-The next $N$ lines contains the integers $s_i$ and $t_i$ ($1 \le s_i < t_i \le $) for each country, in order $0$ to $N - 1$.
+The next $N$ lines contains the integers $s_i$ and $t_i$ ($1 \le s_i < t_i \le 10^9$) for each country, in order $0$ to $N - 1$.
 
 The final $M$ lines contains, for each flight, the start and destinations $s$ and $d$ ($0 \le s \neq d < N$) of a flight.
 
 \section{Output}
-Output a single decial number -- the highest probability that you will get home, if you pick an optimal sequences of flights.
+Output a single decimal number -- the highest probability that you will get home, if you pick an optimal sequences of flights.
 
 Your answer will be considered correct if you have an absolute error of at most ${10}^{-6}$.
