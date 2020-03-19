@@ -62,13 +62,14 @@ void sol(int R, int C, vi cnts) {
 signed main() {
 	cin.sync_with_stdio(0);
 	cin.exceptions(cin.failbit);
-	/*
+	if (1) {
 	int R, C;
 	cin >> R >> C;
 	vi cnts(3);
 	rep(i,0,3) cin >> cnts[i];
 	sol(R, C, cnts);
-	*/
+	return 0;
+	}
 	srand(time(NULL));
 	rep(it,0,1000) {
 		int R = (rand()%5 + 1) * 2;
