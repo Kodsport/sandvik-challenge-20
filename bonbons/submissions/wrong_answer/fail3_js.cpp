@@ -52,7 +52,7 @@ void sol(int R, int C, vi cnts) {
 				int ni = i + dx[k];
 				int nj = j + dy[k];
 				if (ni >= 0 && nj >= 0 && ni < R && nj < C) {
-					if (G[i][j] == G[ni][nj]) assert(false);
+					// if (G[i][j] == G[ni][nj]) assert(false);
 				}
 			}
 		}

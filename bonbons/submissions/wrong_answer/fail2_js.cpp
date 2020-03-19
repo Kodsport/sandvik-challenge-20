@@ -53,7 +53,7 @@ void sol(int R, int C, vi cnts) {
 				int ni = i + dx[k];
 				int nj = j + dy[k];
 				if (ni >= 0 && nj >= 0 && ni < R && nj < C) {
-					if (G[i][j] == G[ni][nj]) assert(false);
+					//if (G[i][j] == G[ni][nj]) assert(false);
 				}
 			}
 		}
@@ -82,6 +82,7 @@ signed main() {
 			cur -= cnts[k];
 		}
 		cnts[2] = cur;
+        cout << R << " " << C << " " << cnts[0] << " " << cnts[1] << " " << cnts[2] << endl;
 		assert(accumulate(all(cnts), 0) == R * C);
 		sol(R, C, cnts);
 	}
