@@ -33,13 +33,13 @@ int main() {
 			if (day >= t[a]) continue;
 			double probGetOut = 1;
 			if (day >= s[a]) {
-				probGetOut = (day - s[a]) / (double)(t[a] - s[a]);
+				probGetOut = 1 - (day - s[a]) / (double)(t[a] - s[a]);
 			}
 			if (b == N-1) {
 				// day++;
 				if (day >= t[b]) continue;
 				if (day >= s[b]) {
-					probGetOut = (day - s[b]) / (double)(t[b] - s[b]);
+					probGetOut *= 1 - (day - s[b]) / (double)(t[b] - s[b]);
 				}
 			}
 			prob2[b] = max(prob2[b], prob[a] * probGetOut);
