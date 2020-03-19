@@ -36,7 +36,7 @@ int main() {
 				probGetOut = (day - s[a]) / (double)(t[a] - s[a]);
 			}
 			if (b == N-1) {
-				day++;
+				// day++;
 				if (day >= t[b]) continue;
 				if (day >= s[b]) {
 					probGetOut = (day - s[b]) / (double)(t[b] - s[b]);
