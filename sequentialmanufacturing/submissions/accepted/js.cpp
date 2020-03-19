@@ -12,11 +12,11 @@ typedef vector<int> vi;
 int main() {
 	cin.sync_with_stdio(0); cin.tie(0);
 	cin.exceptions(cin.failbit);
-    int N, M;
+    ll N, M;
     cin >> N >> M;
-    int ts = 0, mt = 0;
+    ll ts = 0, mt = 0;
     rep(i,0,N) {
-        int t;
+        ll t;
         cin >> t;
         ts += t;
         mt = max(t, mt);
