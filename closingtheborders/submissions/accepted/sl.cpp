@@ -30,10 +30,17 @@ int main() {
 		trav(pa, ed) {
 			int a = pa.first, b = pa.second;
 			int day = it + 1;
-			if (day >= t[b]) continue;
+			if (day >= t[a]) continue;
 			double probGetOut = 1;
-			if (day >= s[b]) {
-				probGetOut = (day - s[b]) / (double)(t[b] - s[b]);
+			if (day >= s[a]) {
+				probGetOut = (day - s[a]) / (double)(t[a] - s[a]);
+			}
+			if (b == N-1) {
+				day++;
+				if (day >= t[b]) continue;
+				if (day >= s[b]) {
+					probGetOut = (day - s[b]) / (double)(t[b] - s[b]);
+				}
 			}
 			prob2[b] = max(prob2[b], prob[a] * probGetOut);
 		}
