@@ -54,6 +54,7 @@ void AssertUnique(const Vec& v);
 namespace IO {
 	IntType Int(long long lo, long long hi);
 	double Float(double lo, double hi, bool strict = true);
+	double FixedReal(double lo, double hi, int decs, bool strict = true);
 	template<class T>
 	vector<T> SpacedInts(long long count, T lo, T hi);
 	vector<double> SpacedFloats(long long count, double lo, double hi);
@@ -289,6 +290,29 @@ vector<double> IO::SpacedFloats(long long count, double lo, double hi) {
 		res.emplace_back(IO::Float(lo, hi));
 	}
 	IO::Endl();
+	return res;
+}
+
+double IO::FixedReal(double lo, double hi, int decs, bool strict) {
+	string s = _token();
+	if (s.empty()) die_line("Expected floating point number, saw " + _describe(_peek1()));
+	istringstream iss(s);
+	double res;
+	string dummy;
+	iss >> res;
+	if (!iss || iss >> dummy) die_line("Unable to parse " + s + " as a float");
+	if (res < lo || res > hi) die_line("Floating-point number " + s + " is out of range [" + to_string(lo) + ", " + to_string(hi) + "]");
+	if (res != res) die_line("Floating-point number " + s + " is NaN");
+	if (strict) {
+        ssize_t dotpos = s.find('.');
+        if (dotpos != string::npos && s.size() - (dotpos  + 1) > decs) {
+			die_line("Number " + s + " has too many decimals");
+        }
+		if (s.find('.') != string::npos && s.back() == '0' && s.substr(s.size() - 2) != ".0")
+			die_line("Number " + s + " has unnecessary trailing zeroes");
+		if (s[0] == '0' && s.size() > 1 && s[1] == '0')
+			die_line("Number " + s + " has unnecessary leading zeroes");
+	}
 	return res;
 }
 
