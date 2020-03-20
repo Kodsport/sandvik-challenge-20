@@ -3,15 +3,15 @@ After an epidemic hit most of Europe, countries have started announcing closures
 This is a problem for you, since you are currently on vacation in France, far away from your home in Sweden.
 You hope to get home before enough borders close so that you can no longer travel.
 
-Through deep political analysis, you have determined that the closure of a given country's borders can be modelled the following way.
-At some day $s_i$, the $i$'th country will announce that it plans to close its border sometime no later than day $t_i$.
+Through deep political analysis, you have determined that the closure of a given country's borders can be modelled in the following way.
+At some day $s_i$, the $i$'th country will announce that it plans to close its border no later than day $t_i$.
 At day $s_i \le x \le t_i$, the probability that the country will have closed their borders by then is $\frac{x - s_i}{t_i - s_i}$.
 If a country closes down its border on a given day, no flights to or from that country will depart on that or any later day.
 It is currently day $1$.
 
 You are currently in country $0$ and want to get to country $N - 1$.
 There are a number of one-directional flights that leave daily, that you can use.
-Since you suspect all the flights will soon become fully booked, you want to book a single itinerary home, using one or more flights.
+Since you suspect that all the flights will soon become fully booked, you want to book a single itinerary home, using one or more flights.
 Each flight leaves in the evening and arrives in the morning the next day.
 Note that even if the destination of a flight leaving on day $d$ closes its borders on day $d + 1$, the plane is still allowed to land.
 
@@ -25,7 +25,7 @@ The next $N$ lines contains the integers $s_i$ and $t_i$ ($1 \le s_i < t_i \le 1
 The final $M$ lines contains, for each flight, the start and destinations $s$ and $d$ ($0 \le s \neq d < N$) of a flight.
 There will be at most one flight between a given pair of countries.
 
-\section{Output}
+\section*{Output}
 Output a single decimal number -- the highest probability that you will get home, if you pick an optimal sequences of flights.
 
 Your answer will be considered correct if you have an absolute error of at most ${10}^{-6}$.
