@@ -303,11 +303,14 @@ double IO::FixedReal(double lo, double hi, int decs, bool strict) {
 	if (!iss || iss >> dummy) die_line("Unable to parse " + s + " as a float");
 	if (res < lo || res > hi) die_line("Floating-point number " + s + " is out of range [" + to_string(lo) + ", " + to_string(hi) + "]");
 	if (res != res) die_line("Floating-point number " + s + " is NaN");
+	if (s.find_first_not_of("-0123456789.") != string::npos) {
+		die_line("Number " + s + " is not a fixed real (floating-point?)");
+	}
+	ssize_t dotpos = s.find('.');
+	if (dotpos != string::npos && s.size() - (dotpos  + 1) > decs) {
+		die_line("Number " + s + " has too many decimals");
+	}
 	if (strict) {
-        ssize_t dotpos = s.find('.');
-        if (dotpos != string::npos && s.size() - (dotpos  + 1) > decs) {
-			die_line("Number " + s + " has too many decimals");
-        }
 		if (s.find('.') != string::npos && s.back() == '0' && s.substr(s.size() - 2) != ".0")
 			die_line("Number " + s + " has unnecessary trailing zeroes");
 		if (s[0] == '0' && s.size() > 1 && s[1] == '0')
