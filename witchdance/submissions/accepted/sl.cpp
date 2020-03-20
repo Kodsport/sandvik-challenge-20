@@ -28,7 +28,9 @@ bool crash(const Witch& a, const Witch& b) {
 	// ar - time = pi - (br - time)
 	// ar + br - pi = 2 time
 	double time = (ar + br - M_PI) / 2;
-	double ar2 = fmod(ar - time, 2*M_PI);
+	ar -= time;
+	br -= time;
+	double ar2 = fmod(ar, 2*M_PI);
 	if (ar2 > M_PI) ar2 -= 2*M_PI;
 	if (ar2 < -M_PI) ar2 += 2*M_PI;
 	if (fabs(ar2) > M_PI/2) {
@@ -36,8 +38,8 @@ bool crash(const Witch& a, const Witch& b) {
 		br += M_PI;
 	}
 	double t = cos(ar);
-	assert(t >= -1e-6);
-	assert(fabs(cos(br) + t) < 1e-6);
+	assert(t >= -1e-6); // positive given how we oriented a, b
+	assert(fabs(cos(br) + t) < 1e-6); // br points the other way
 	return 2*t >= dx;
 }
 
@@ -52,6 +54,7 @@ int main() {
 		cin >> x >> y >> r;
 		int ix = (int)floor(x);
 		int iy = (int)floor(y);
+		r = -r; // ccw is more natural
 		rep(di,-1,2) rep(dj,-1,2)
 			buckets[pii(ix + di, iy + dj)].push_back({x, y, r});
 	}
